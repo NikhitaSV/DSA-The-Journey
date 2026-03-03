@@ -1,0 +1,42 @@
+//method 1
+
+#include <iostream>
+#include <vector>
+using namespace std;
+
+bool isSorted(vector<int>& v) {
+    for (int i = 1; i < v.size(); i++) {
+        if (v[i] < v[i - 1])
+            return false;   // Early exit
+    }
+    return true;
+}
+
+int main() {
+    vector<int> v = {1, 2, 3, 4, 5};
+
+    if (isSorted(v))
+        cout << "Sorted";
+    else
+        cout << "Not Sorted";
+}
+
+//method 2 (using vectors and library function)
+
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+bool isSorted(vector<int>& v) {
+    return is_sorted(v.begin(), v.end());
+}
+
+int main() {
+    vector<int> v = {1, 2, 3, 4, 5};
+
+    if (isSorted(v))
+        cout << "Sorted";
+    else
+        cout << "Not Sorted";
+}
