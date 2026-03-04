@@ -1,0 +1,132 @@
+//method 1
+
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() 
+{
+    cout<<"Enter elements in array: ";
+    vector<int> v,v1;
+    int x;
+    while(cin>>x)
+    {
+        v.push_back(x);
+    }
+    
+    for(int i=0;i<v.size()-1;i++)
+    {
+        for(int j=0;j<v.size()-1;j++)
+        {
+            if(v[j]>v[j+1])
+            {
+                swap(v[j],v[j+1]);
+            }
+        }
+    }
+    
+    
+    int j=0;
+    for(int i=0;i<v.size()-1;i++)
+    {
+       if(v[i]!=v[i+1]) 
+       {
+           v1.push_back(v[i]);
+       }
+       j++;
+    }
+    v1.push_back(v[v.size() - 1]);
+    
+    cout<<"Aftrer removing : ";
+    
+    for(auto x: v1)
+    {
+        cout<<x<<" ";
+    }
+    return 0;
+}
+
+//method 2
+
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() 
+{
+    cout<<"Enter elements in array: ";
+    vector<int> v,v1;
+    int x;
+    while(cin>>x)
+    {
+        v.push_back(x);
+    }
+    
+    for(int i=0;i<v.size()-1;i++)
+    {
+        for(int j=0;j<v.size()-1;j++)
+        {
+            if(v[j]>v[j+1])
+            {
+                swap(v[j],v[j+1]);
+            }
+        }
+    }
+    
+   v1.push_back(v[0]);
+
+    for (int i = 1; i < v.size(); i++) {
+        if (v[i] != v[i - 1]) {
+            v1.push_back(v[i]);
+        }
+    }
+    
+    cout<<"Aftrer removing : ";
+    
+    for(auto x: v1)
+    {
+        cout<<x<<" ";
+    }
+    return 0;
+}
+
+//method 3
+
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+    vector<int> v;
+    int x;
+
+    cout << "Enter sorted elements (Ctrl+D to stop): ";
+
+    while (cin >> x) {
+        v.push_back(x);
+    }
+
+    if (v.size() == 0) {
+        cout << "Vector is empty.";
+        return 0;
+    }
+
+    // Two-pointer technique
+    int j = 0;  // Points to last unique element
+
+    for (int i = 1; i < v.size(); i++) {
+        if (v[i] != v[j]) {
+            j++;
+            v[j] = v[i];
+        }
+    }
+
+    cout << "After removing duplicates: ";
+
+    // Only print unique part (0 to j)
+    for (int i = 0; i <= j; i++) {
+        cout << v[i] << " ";
+    }
+
+    return 0;
+}
