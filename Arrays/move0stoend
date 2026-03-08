@@ -1,0 +1,84 @@
+#include<iostream>
+using namespace std;
+
+int main()
+{
+    int a[100];
+    int i,n;
+
+    cout<<"Enter n: ";
+    cin>>n;
+
+    cout<<"Enter array elements: ";
+    for(i=0;i<n;i++)
+    {
+        cin>>a[i];
+    }
+
+    int size = n;
+
+    for(i=0;i<size;i++)
+    {
+        if(a[i]==0)
+        {
+            for(int j=i;j<size-1;j++)
+            {
+                a[j]=a[j+1];
+            }
+
+            a[size-1]=0;
+            size--;
+            i--;
+        }
+    }
+
+    cout<<"Moved array is: ";
+    for(i=0;i<n;i++)
+    {
+        cout<<a[i]<<" ";
+    }
+}
+
+//optimised
+
+#include<iostream>
+using namespace std;
+
+int main()
+{
+    int a[100];
+    int n,i;
+
+    cout<<"Enter n: ";
+    cin>>n;
+
+    cout<<"Enter array elements: ";
+    for(i=0;i<n;i++)
+    {
+        cin>>a[i];
+    }
+
+    int j = 0;   // position where next non-zero should go
+
+    for(i=0;i<n;i++)
+    {
+        if(a[i] != 0)
+        {
+            if(i != j)
+            {
+                int temp = a[i];
+                a[i] = a[j];
+                a[j] = temp;
+            }
+            j++;
+        }
+    }
+
+    cout<<"Moved array is: ";
+    for(i=0;i<n;i++)
+    {
+        cout<<a[i]<<" ";
+    }
+
+    return 0;
+}
